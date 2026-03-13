@@ -9,6 +9,7 @@ REPO="herd-labs/herd-cli"
 BINARY_NAME="herd"
 INSTALL_DIR="${HERD_INSTALL_DIR:-$HOME/.herd/bin}"
 TAG_PREFIX="v"
+TMP_DIR=""
 
 # ─── Colors ───────────────────────────────────────────────────────────────────
 
@@ -122,12 +123,11 @@ resolve_version() {
 install() {
   local artifact="${BINARY_NAME}-${PLATFORM}"
   local download_url="https://github.com/${REPO}/releases/download/${TAG}/${artifact}"
-  local tmp_dir
 
-  tmp_dir="$(mktemp -d)" || die "Failed to create temporary directory"
-  trap 'rm -rf "$tmp_dir"' EXIT
+  TMP_DIR="$(mktemp -d)" || die "Failed to create temporary directory"
+  trap 'rm -rf "$TMP_DIR"' EXIT
 
-  local tmp_file="${tmp_dir}/${artifact}"
+  local tmp_file="${TMP_DIR}/${artifact}"
 
   info "Downloading ${BINARY_NAME} v${VERSION} for ${PLATFORM}..."
   download_file "$download_url" "$tmp_file" || {
