@@ -11,7 +11,7 @@ curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh 
 Install a specific version:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh | bash -s -- --version 0.4.0
+curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh | bash -s -- --version 0.4.1
 ```
 
 ### Manual download
@@ -48,8 +48,8 @@ herd tx query 0xabc123...
 # Get a wallet overview
 herd wallet overview 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045
 
-# Evaluate a HAL expression
-herd hal evaluate --wallet 0xYourWallet '["do", ["define", "x", 42], "x"]'
+# Simulate a HAL expression
+herd hal simulate '["do", ["define", "x", 42], "x"]'
 
 # Search for actions
 herd hal search "uniswap swap"
@@ -66,73 +66,30 @@ For CI/CD, set `HERD_ACCESS_TOKEN` or `HERD_API_KEY` environment variables to sk
 
 ## Commands
 
-### Auth
-
 | Command | Description |
 | --- | --- |
 | `herd login` | Authenticate via browser-based OAuth |
-| `herd logout` | Log out and clear stored credentials |
+| `herd logout` | Log out and clear credentials |
 | `herd whoami` | Show the authenticated user |
-| `herd update [--version text]` | Update herd to the latest version |
-
-### Contract
-
-| Command | Description |
-| --- | --- |
-| `herd contract metadata <address>` | Get contract metadata, ABI, and summaries |
+| `herd contract metadata <address>` | Get contract metadata and ABI |
 | `herd contract deployed <address>` | List contracts deployed by an address |
-| `herd contract roles <address>` | Get role/permission topology for a contract |
-| `herd contract diff <address>` | Show semantic diffs between contract implementation versions |
-| `herd contract code --query <text> --contract-address <address>` | Search contract source code or return full source |
-
-### Wallet
-
-| Command | Description |
-| --- | --- |
-| `herd wallet overview <address>` | Wallet overview with type, balances, and activity stats |
-| `herd wallet tokens <address> <token>` | Token activity for an address |
-| `herd wallet transactions <address>` | Transaction activity for an address |
-| `herd wallet deployed-contracts <address>` | Deployed contracts for an address |
-
-### Transactions
-
-| Command | Description |
-| --- | --- |
-| `herd tx query <hash>` | Query and inspect a transaction by hash |
-| `herd tx latest --contractAddress <address>` | Get latest transactions calling a function or emitting an event |
-
-### HAL
-
-| Command | Description |
-| --- | --- |
-| `herd hal evaluate --wallet <address> [<expression>]` | Evaluate a HAL expression in a sandboxed Tevm fork |
-| `herd hal evaluate-existing --wallet <address> <action-id>` | Simulate an existing action by ID in a sandboxed Tevm fork |
-| `herd hal search [<query>]` | Search actions and adapters |
-| `herd hal get <id>` | Get an action or adapter by ID |
-| `herd hal search-collections [<query>]` | Search collections |
-| `herd hal get-collection <id>` | Get a collection by ID |
-| `herd hal get-code-block <id>` | Get a code block by ID |
-| `herd hal execute-code-block <id>` | Execute a code block |
-| `herd hal create action <name> [<expression>]` | Create a new action from a HAL expression |
-| `herd hal create adapter <name> [<expression>]` | Create a new adapter from a HAL expression |
-| `herd hal create code-block <name> [<code>]` | Create a new code block |
-| `herd hal create collection <name>` | Create a new collection |
-| `herd hal update action <id>` | Update an existing action by ID |
-| `herd hal update adapter <id>` | Update an existing adapter by ID |
-| `herd hal update code-block <id>` | Update an existing code block by ID |
-| `herd hal update collection <id>` | Update an existing collection by ID |
-| `herd hal delete <id>` | Delete an action or adapter by ID |
-| `herd hal delete-code-block <id>` | Delete a code block by ID |
-
-### Bookmarks & Docs
-
-| Command | Description |
-| --- | --- |
+| `herd contract roles <address>` | Get role/permission topology |
+| `herd contract diff <address>` | Diff upgradeable contract versions |
+| `herd wallet overview <address>` | Wallet overview (type, balances, tx count) |
+| `herd wallet tokens <address> <token>` | Token transfer activity |
+| `herd wallet transactions <address>` | Transaction activity |
+| `herd tx query <hash>` | Full transaction inspection |
+| `herd tx latest <address> <sig>` | Latest transactions by signature |
+| `herd hal simulate <expr>` | Simulate a HAL expression |
+| `herd hal search <query>` | Search actions and adapters |
+| `herd hal get <id>` | Get an action or adapter |
+| `herd hal create action <name> <expr>` | Create a new action |
+| `herd hal update action <id>` | Update an action |
+| `herd hal delete <id>` | Delete an action or adapter |
 | `herd bookmarks list` | List saved bookmarks |
-| `herd bookmarks update --operation add\|edit\|remove --object-type contract\|transaction\|wallet <objectId>` | Add, edit, or remove a bookmark |
-| `herd docs read [<doc-id>]` | Read documentation by document ID |
+| `herd docs read` | Browse platform documentation |
 
-Most commands support `--format json|pretty|table` and `--blockchain ethereum|base`.
+Most commands support `--format json|pretty|table` and `--blockchain <chain>`.
 
 Run `herd <command> --help` for full options.
 
