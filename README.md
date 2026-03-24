@@ -11,7 +11,7 @@ curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh 
 Install a specific version:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh | bash -s -- --version 0.4.4
+curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh | bash -s -- --version 0.4.5
 ```
 
 ### Manual download
@@ -55,6 +55,7 @@ herd hal simulate '["do", ["define", "x", 42], "x"]'
 herd hal search "uniswap swap"
 
 # Read documentation
+# (Web route: https://herd.eco/SKILL.md)
 herd docs read
 ```
 
