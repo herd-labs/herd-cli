@@ -11,7 +11,7 @@ curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh 
 Install a specific version:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh | bash -s -- --version 0.5.3
+curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh | bash -s -- --version 0.5.4
 ```
 
 ### Manual download
@@ -74,7 +74,6 @@ For CI/CD, set `HERD_ACCESS_TOKEN` or `HERD_API_KEY` environment variables to sk
 | `herd whoami` | Show the authenticated user |
 | `herd contract metadata <address>` | Get contract metadata and ABI |
 | `herd contract deployed <address>` | List contracts deployed by an address |
-| `herd contract roles <address>` | Get role/permission topology |
 | `herd contract diff <address>` | Diff upgradeable contract versions |
 | `herd wallet overview <address>` | Wallet overview (type, balances, tx count) |
 | `herd wallet tokens <address> <token>` | Token transfer activity |
