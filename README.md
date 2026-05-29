@@ -11,7 +11,7 @@ curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh 
 Install a specific version:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh | bash -s -- --version 0.8.1
+curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh | bash -s -- --version 0.9.0
 ```
 
 ### Manual download
@@ -67,27 +67,27 @@ For CI/CD, set `HERD_ACCESS_TOKEN` or `HERD_API_KEY` environment variables to sk
 
 ## Commands
 
-| Command | Description |
-| --- | --- |
-| `herd login` | Authenticate via browser-based OAuth |
-| `herd logout` | Log out and clear credentials |
-| `herd whoami` | Show the authenticated user |
-| `herd contract metadata <address>` | Get contract metadata and ABI |
-| `herd contract deployed <address>` | List contracts deployed by an address |
-| `herd contract diff <address>` | Diff upgradeable contract versions |
-| `herd wallet overview <address>` | Wallet overview (type, balances, tx count) |
-| `herd wallet tokens <address> <token>` | Token transfer activity |
+| Command                                         | Description                                        |
+| ----------------------------------------------- | -------------------------------------------------- |
+| `herd login`                                    | Authenticate via browser-based OAuth               |
+| `herd logout`                                   | Log out and clear credentials                      |
+| `herd whoami`                                   | Show the authenticated user                        |
+| `herd contract metadata <address>`              | Get contract metadata and ABI                      |
+| `herd contract deployed <address>`              | List contracts deployed by an address              |
+| `herd contract diff <address>`                  | Diff upgradeable contract versions                 |
+| `herd wallet overview <address>`                | Wallet overview (type, balances, tx count)         |
+| `herd wallet tokens <address> <token>`          | Token transfer activity                            |
 | `herd wallet transactions [<address>] [--to …]` | Transaction activity (caller or callee via `--to`) |
-| `herd tx query <hash>` | Full transaction inspection |
-| `herd tx latest <address> <sig>` | Latest transactions by signature |
-| `herd hal simulate <expr>` | Simulate a HAL expression |
-| `herd hal search <query>` | Search actions and adapters |
-| `herd hal get <id>` | Get an action or adapter |
-| `herd hal create action <name> <expr>` | Create a new action |
-| `herd hal update action <id>` | Update an action |
-| `herd hal delete <id>` | Delete an action or adapter |
-| `herd bookmarks list` | List saved bookmarks |
-| `herd docs read` | Browse platform documentation |
+| `herd tx query <hash>`                          | Full transaction inspection                        |
+| `herd tx latest <address> <sig>`                | Latest transactions by signature                   |
+| `herd hal simulate <expr>`                      | Simulate a HAL expression                          |
+| `herd hal search <query>`                       | Search actions and adapters                        |
+| `herd hal get <id>`                             | Get an action or adapter                           |
+| `herd hal create action <name> <expr>`          | Create a new action                                |
+| `herd hal update action <id>`                   | Update an action                                   |
+| `herd hal delete <id>`                          | Delete an action or adapter                        |
+| `herd bookmarks list`                           | List saved bookmarks                               |
+| `herd docs read`                                | Browse platform documentation                      |
 
 Most commands support `--format json|pretty|table` and `--blockchain <chain>`.
 
@@ -95,11 +95,11 @@ Run `herd <command> --help` for full options.
 
 ## Environment variables
 
-| Variable | Default | Description |
-| --- | --- | --- |
-| `HERD_API_BASE_URL` | `https://api.herd.eco` | Base URL for the Herd API |
-| `HERD_ACCESS_TOKEN` | -- | Override access token (skips OAuth) |
-| `HERD_API_KEY` | -- | Override API key |
+| Variable            | Default                | Description                         |
+| ------------------- | ---------------------- | ----------------------------------- |
+| `HERD_API_BASE_URL` | `https://api.herd.eco` | Base URL for the Herd API           |
+| `HERD_ACCESS_TOKEN` | --                     | Override access token (skips OAuth) |
+| `HERD_API_KEY`      | --                     | Override API key                    |
 
 ## Uninstall
 
