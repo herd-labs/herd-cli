@@ -11,7 +11,7 @@ curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh 
 Install a specific version:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh | bash -s -- --version 0.10.4
+curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh | bash -s -- --version 0.11.0
 ```
 
 ### Manual download
@@ -61,7 +61,7 @@ herd docs read
 
 ## Authentication
 
-The CLI uses OAuth 2.0 with PKCE. Run `herd login` to authenticate via your browser. Tokens are stored at `~/.herd/credentials.json`.
+The CLI uses OAuth 2.0 with PKCE. Run `herd login` to authenticate via your browser. Tokens are stored in `~/.herd/credentials.json`.
 
 For CI/CD, set `HERD_ACCESS_TOKEN` or `HERD_API_KEY` environment variables to skip the interactive flow.
 
