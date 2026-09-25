@@ -11,7 +11,7 @@ curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh 
 Install a specific version:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh | bash -s -- --version 0.13.3
+curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh | bash -s -- --version 0.13.4
 ```
 
 ### Manual download
@@ -49,7 +49,7 @@ herd tx query 0xabc123...
 herd wallet overview 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045
 
 # Simulate a HAL expression
-herd hal simulate '["do", ["define", "x", 42], "x"]'
+herd hal adapter call -w 0x0000000000000000000000000000000000000001 -e '["do", ["define", { "name": "x", "value": 42 }], "x"]'
 
 # Search for actions
 herd hal search "uniswap swap"
@@ -67,26 +67,27 @@ For CI/CD, set `HERD_ACCESS_TOKEN` or `HERD_API_KEY` environment variables to sk
 
 ## Commands
 
-| Command                                         | Description                                        |
-| ----------------------------------------------- | -------------------------------------------------- |
-| `herd login`                                    | Authenticate via browser-based OAuth               |
-| `herd logout`                                   | Log out and clear credentials                      |
-| `herd whoami`                                   | Show the authenticated user                        |
-| `herd contract metadata <address>`              | Get contract metadata and ABI                      |
-| `herd contract deployed <address>`              | List contracts deployed by an address              |
-| `herd wallet overview <address>`                | Wallet overview (type, balances, tx count)         |
-| `herd wallet tokens <address> <token>`          | Token transfer activity                            |
-| `herd wallet transactions [<address>] [--to …]` | Transaction activity (caller or callee via `--to`) |
-| `herd tx query <hash>`                          | Full transaction inspection                        |
-| `herd tx latest <address> <sig>`                | Latest transactions by signature                   |
-| `herd hal simulate <expr>`                      | Simulate a HAL expression                          |
-| `herd hal search <query>`                       | Search actions and adapters                        |
-| `herd hal get <id>`                             | Get an action or adapter                           |
-| `herd hal create action <name> <expr>`          | Create a new action                                |
-| `herd hal update action <id>`                   | Update an action                                   |
-| `herd hal delete <id>`                          | Delete an action or adapter                        |
-| `herd bookmarks list`                           | List saved bookmarks                               |
-| `herd docs read`                                | Browse platform documentation                      |
+| Command                                           | Description                                        |
+| ------------------------------------------------- | -------------------------------------------------- |
+| `herd login`                                      | Authenticate via browser-based OAuth               |
+| `herd logout`                                     | Log out and clear credentials                      |
+| `herd whoami`                                     | Show the authenticated user                        |
+| `herd contract metadata <address>`                | Get contract metadata and ABI                      |
+| `herd contract deployed <address>`                | List contracts deployed by an address              |
+| `herd wallet overview <address>`                  | Wallet overview (type, balances, tx count)         |
+| `herd wallet tokens <address> <token>`            | Token transfer activity                            |
+| `herd wallet transactions [<address>] [--to …]`   | Transaction activity (caller or callee via `--to`) |
+| `herd tx query <hash>`                            | Full transaction inspection                        |
+| `herd tx latest <address> <sig>`                  | Latest transactions by signature                   |
+| `herd hal adapter call -e <expr>`                 | Call a read-only HAL expression or adapter         |
+| `herd hal action-execution start --mode simulate` | Simulate a HAL action (creates an execution)       |
+| `herd hal search <query>`                         | Search actions and adapters                        |
+| `herd hal get <id>`                               | Get an action or adapter                           |
+| `herd hal create action <name> <expr>`            | Create a new action                                |
+| `herd hal update action <id>`                     | Update an action                                   |
+| `herd hal delete <id>`                            | Delete an action or adapter                        |
+| `herd bookmarks list`                             | List saved bookmarks                               |
+| `herd docs read`                                  | Browse platform documentation                      |
 
 Most commands support `--format json|pretty|table` and `--blockchain <chain>`.
 
