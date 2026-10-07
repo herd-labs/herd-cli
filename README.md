@@ -11,7 +11,7 @@ curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh 
 Install a specific version:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh | bash -s -- --version 0.13.7
+curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh | bash -s -- --version 0.14.0
 ```
 
 ### Manual download
@@ -77,6 +77,7 @@ For CI/CD, set `HERD_ACCESS_TOKEN` or `HERD_API_KEY` environment variables to sk
 | `herd wallet overview <address>`                  | Wallet overview (type, balances, tx count)         |
 | `herd wallet tokens <address> <token>`            | Token transfer activity                            |
 | `herd wallet transactions [<address>] [--to …]`   | Transaction activity (caller or callee via `--to`) |
+| `herd wallet managed list`                        | List Herd wallets you belong to                    |
 | `herd tx query <hash>`                            | Full transaction inspection                        |
 | `herd tx latest <address> <sig>`                  | Latest transactions by signature                   |
 | `herd hal adapter call -e <expr>`                 | Call a read-only HAL expression or adapter         |
@@ -92,6 +93,8 @@ For CI/CD, set `HERD_ACCESS_TOKEN` or `HERD_API_KEY` environment variables to sk
 Most commands support `--format json|pretty|table` and `--blockchain <chain>`.
 
 Run `herd <command> --help` for full options.
+
+`herd wallet managed` requires `walletAccess` and contains wallet operations, `signing-account`, and `wallet-action`. Address exploration remains under `herd wallet` and independently requires `explorerAccess`. Both require authentication.
 
 ## Environment variables
 
