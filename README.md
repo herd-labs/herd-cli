@@ -11,7 +11,7 @@ curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh 
 Install a specific version:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh | bash -s -- --version 0.14.0
+curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh | bash -s -- --version 0.15.0
 ```
 
 ### Manual download
@@ -88,6 +88,9 @@ For CI/CD, set `HERD_ACCESS_TOKEN` or `HERD_API_KEY` environment variables to sk
 | `herd hal update action <id>`                     | Update an action                                   |
 | `herd hal delete <id>`                            | Delete an action or adapter                        |
 | `herd bookmarks list`                             | List saved bookmarks                               |
+| `herd bookmarks create <id>`                      | Save a bookmark                                    |
+| `herd bookmarks update <id> --label <label>`      | Change a bookmark label                            |
+| `herd bookmarks delete <id>`                      | Delete a bookmark                                  |
 | `herd docs read`                                  | Browse platform documentation                      |
 
 Most commands support `--format json|pretty|table` and `--blockchain <chain>`.
