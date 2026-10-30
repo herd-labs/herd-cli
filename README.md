@@ -11,7 +11,7 @@ curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh 
 Install a specific version:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh | bash -s -- --version 0.17.0
+curl -fsSL https://raw.githubusercontent.com/herd-labs/herd-cli/main/install.sh | bash -s -- --version 0.18.0
 ```
 
 ### Manual download
@@ -71,7 +71,7 @@ For CI/CD, set `HERD_ACCESS_TOKEN` or `HERD_API_KEY` environment variables to sk
 | ------------------------------------------------- | -------------------------------------------------- |
 | `herd login`                                      | Authenticate via browser-based OAuth               |
 | `herd logout`                                     | Log out and clear credentials                      |
-| `herd whoami`                                     | Show the authenticated user                        |
+| `herd whoami`                                     | Show actor, organization, credential, and access   |
 | `herd contract metadata <address>`                | Get contract metadata and ABI                      |
 | `herd contract deployed <address>`                | List contracts deployed by an address              |
 | `herd wallet overview <address>`                  | Wallet overview (type, balances, tx count)         |
@@ -97,15 +97,16 @@ Most commands support `--format json|pretty|table` and `--blockchain <chain>`.
 
 Run `herd <command> --help` for full options.
 
-`herd wallet managed` requires `walletAccess` and contains wallet operations, `signing-account`, and `wallet-action`. Address exploration remains under `herd wallet` and independently requires `explorerAccess`. Both require authentication.
+`herd wallet managed` requires the acting organization's `wallets` capability and contains wallet operations, `signing-account`, and `wallet-action`. Address exploration remains under `herd wallet`. Both require authentication. `herd whoami` shows organization capabilities separately from credential permissions; API keys show no owner's email.
 
 ## Environment variables
 
-| Variable            | Default                | Description                         |
-| ------------------- | ---------------------- | ----------------------------------- |
-| `HERD_API_BASE_URL` | `https://api.herd.eco` | Base URL for the Herd API           |
-| `HERD_ACCESS_TOKEN` | --                     | Override access token (skips OAuth) |
-| `HERD_API_KEY`      | --                     | Override API key                    |
+| Variable            | Default                | Description                                    |
+| ------------------- | ---------------------- | ---------------------------------------------- |
+| `HERD_API_BASE_URL` | `https://api.herd.eco` | Base URL for the Herd API                      |
+| `HERD_RPC_BASE_URL` | `https://rpc.herd.eco` | Base URL for account discovery and Domain RPCs |
+| `HERD_ACCESS_TOKEN` | --                     | Override access token (skips OAuth)            |
+| `HERD_API_KEY`      | --                     | Override API key                               |
 
 ## Uninstall
 
